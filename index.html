@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      $( document ).ready(function() {
+        if("geolocation" in navigator) {
+          $('.container').append('<p>support geolocation</p>');
+          navigator.geolocation.getCurrentPosition(function(position) {
+          console.log(position.coords);
+          const {
+            latitude,
+            longitude,
+          } = position.coords;
+          $('.container').append(`<p>latitude is ${latitude}, longitude is ${longitude}</p>`);
+          
+          });
+        } else {
+          $('.container').append('<p>not support geolocation</p>');
+        }
+      });
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>geo test</h1>
+    </div>
+  </body>
+</html>
